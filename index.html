@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbod Zarrin Zadeh — IT Support &amp; Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F6F3;
+    --panel: #FFFFFF;
+    --ink: #1B1F23;
+    --ink-soft: #565D66;
+    --line: #DDDFDA;
+    --accent: #2E5D5A;
+    --accent-soft: #E4ECEA;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Space Grotesk', sans-serif;
+    --max: 780px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:10;
+    background:rgba(246,246,243,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:16px 24px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .nav-mark{font-family:var(--display); font-weight:600; font-size:16px; letter-spacing:0.01em;}
+  .nav-links{display:flex; gap:22px; font-size:14px;}
+  .nav-links a{text-decoration:none; color:var(--ink-soft); transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+
+  .hero{
+    padding:76px 0 56px;
+    opacity:0;
+    animation: rise .7s ease-out forwards;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .status-line{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:13px; color:var(--accent);
+    background:var(--accent-soft);
+    padding:6px 12px; border-radius:3px;
+    margin-bottom:26px;
+  }
+  .dot{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--accent);
+    animation: blink 1.8s ease-in-out infinite;
+  }
+  @keyframes blink{
+    0%, 100%{opacity:1;} 50%{opacity:.25;}
+  }
+  h1{
+    font-family:var(--display);
+    font-size:42px;
+    line-height:1.12;
+    margin:0 0 14px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-size:19px;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin:0 0 30px;
+  }
+  .hero-links{display:flex; flex-wrap:wrap; gap:12px;}
+  .btn{
+    font-size:14px;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:3px;
+    border:1px solid var(--line);
+    color:var(--ink);
+    transition:border-color .15s, background .15s;
+  }
+  .btn.primary{
+    background:var(--ink);
+    color:#fff;
+    border-color:var(--ink);
+  }
+  .btn:hover{border-color:var(--accent);}
+  .btn.primary:hover{background:var(--accent); border-color:var(--accent);}
+
+  section{padding:54px 0; border-top:1px solid var(--line);}
+  h2{
+    font-family:var(--display);
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink-soft);
+    margin:0 0 26px;
+    letter-spacing:0.04em;
+  }
+  .about p{
+    font-size:17px;
+    max-width:640px;
+    margin:0 0 16px;
+  }
+
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+    gap:22px 32px;
+  }
+  .skill-group h3{
+    font-size:14px;
+    font-weight:600;
+    margin:0 0 8px;
+  }
+  .skill-group p{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  .project{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:4px;
+    padding:26px 28px;
+    margin-bottom:20px;
+  }
+  .project:last-child{margin-bottom:0;}
+  .project-top{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+  }
+  .project h3{
+    font-family:var(--display);
+    font-size:19px;
+    margin:0;
+    font-weight:600;
+  }
+  .project-link{
+    font-size:13px;
+    font-family:var(--mono);
+    color:var(--accent);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .project-link:hover{text-decoration:underline;}
+  .project p.desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:12px 0 16px;
+    max-width:620px;
+  }
+  .project-highlights{
+    font-size:14px;
+    color:var(--ink);
+    margin:0 0 16px;
+    padding-left:18px;
+  }
+  .project-highlights li{margin-bottom:5px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-family:var(--mono);
+    font-size:12px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 9px;
+    border-radius:3px;
+  }
+
+  .timeline-item{
+    display:flex; gap:20px;
+    padding-bottom:20px;
+    font-size:15px;
+  }
+  .timeline-item:last-child{padding-bottom:0;}
+  .timeline-date{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-soft);
+    min-width:120px;
+    padding-top:2px;
+  }
+  .timeline-role{font-weight:600;}
+  .timeline-org{color:var(--ink-soft); font-size:14px;}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:44px 0 60px;
+  }
+  footer h2{margin-bottom:16px;}
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:22px;
+    font-size:15px;
+  }
+  .contact-row a{text-decoration:none; border-bottom:1px solid var(--line);}
+  .contact-row a:hover{border-color:var(--accent); color:var(--accent);}
+  .foot-note{
+    margin-top:34px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:600px){
+    h1{font-size:32px;}
+    .nav-links{gap:14px; font-size:13px;}
+    .hero{padding:56px 0 40px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero{animation:none; opacity:1;}
+    .dot{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark">Barbod Zarrin Zadeh</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="status-line"><span class="dot"></span> open to IT support &amp; help desk roles</div>
+    <h1>IT support specialist who documents everything and breaks nothing on purpose.</h1>
+    <p class="role">Information Technology undergraduate (graduating December 2026) with hands-on experience in device diagnostics, ticket-based troubleshooting, and a growing focus on systems and AI security.</p>
+    <div class="hero-links">
+      <a class="btn primary" href="mailto:bzarrinzadeh@gmail.com">Email me</a>
+      <a class="btn" href="https://github.com/barbodz" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://linkedin.com/in/bzarrinzadeh" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about">
+      <p>I'm an IT undergraduate based in Vancouver, currently working as an Apple Certified Service Technician, where I spend most days diagnosing hardware and software issues, walking customers through fixes in plain language, and keeping detailed repair and inventory records. Before that, I ran day-to-day operations at a small retail shop, which taught me just as much about staying organized under pressure as any class did.</p>
+      <p>Outside of work, I like building small, useful tools and poking at how AI systems can be made more reliable and secure. My capstone research project looked at detecting prompt injection attacks across multi-turn conversations — one of a few side projects I keep on GitHub.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>IT &amp; Support</h3>
+        <p>Hardware/software troubleshooting, ticketing systems, device diagnostics, inventory &amp; asset tracking, technical documentation</p>
+      </div>
+      <div class="skill-group">
+        <h3>Systems</h3>
+        <p>Windows, macOS, iOS, Microsoft 365, Outlook, Teams</p>
+      </div>
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <p>Python, Java, JavaScript, SQL/MySQL, HTML/CSS</p>
+      </div>
+      <div class="skill-group">
+        <h3>Currently learning</h3>
+        <p>Cybersecurity fundamentals, Active Directory / Entra, applied ML for security research</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Context-Aware Multi-Turn Prompt Injection Detector</h3>
+        <a class="project-link" href="https://github.com/barbodz/capstone-v2-prompt-injection-detector" target="_blank" rel="noopener">github ↗</a>
+      </div>
+      <p class="desc">Capstone research project testing whether analyzing a full conversation — not just the latest message — improves detection of multi-turn prompt injection attacks against LLM applications. Built a rule-based detector that scores instruction overrides, role manipulation, and context-poisoning patterns across turns, then validated it against a static single-prompt baseline.</p>
+      <ul class="project-highlights">
+        <li>Reached perfect precision and recall on blind held-out and external validation sets, versus roughly 80% accuracy for the single-prompt baseline</li>
+        <li>Held a 0% false-positive rate on a benign cybersecurity/AI-safety stress set, so legitimate security discussion wasn't flagged</li>
+        <li>Fully reproducible: frozen detector hashes, dataset validation, and statistical significance testing (Wilson intervals, McNemar's test)</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">python</span>
+        <span class="tag">llm security</span>
+        <span class="tag">rule-based detection</span>
+        <span class="tag">jupyter</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <h3>Wardrobe Outfit Recommender</h3>
+        <a class="project-link" href="https://github.com/barbodz/wardrobe-outfit-recommender" target="_blank" rel="noopener">github ↗</a>
+      </div>
+      <p class="desc">A small Streamlit app that recommends outfits pulled from my own wardrobe. Built to practice turning a simple, everyday problem into a working app — from structuring the wardrobe data to writing the recommendation logic to shipping an interface someone could actually click through.</p>
+      <div class="tags">
+        <span class="tag">python</span>
+        <span class="tag">streamlit</span>
+        <span class="tag">data modeling</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="timeline-item">
+      <div class="timeline-date">2024 — present</div>
+      <div>
+        <div class="timeline-role">Apple Certified Service Technician</div>
+        <div class="timeline-org">London Drugs, Vancouver, BC</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2024 — 2025</div>
+      <div>
+        <div class="timeline-role">Assistant Manager / Customer Service</div>
+        <div class="timeline-org">The UPS Store, Port Moody, BC</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2023 — 2024</div>
+      <div>
+        <div class="timeline-role">Student Services Assistant</div>
+        <div class="timeline-org">Fairleigh Dickinson University, Vancouver, BC</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Contact</h2>
+    <div class="contact-row">
+      <a href="mailto:bzarrinzadeh@gmail.com">bzarrinzadeh@gmail.com</a>
+      <a href="tel:2365168760">236-516-8760</a>
+      <a href="https://linkedin.com/in/bzarrinzadeh" target="_blank" rel="noopener">linkedin.com/in/bzarrinzadeh</a>
+      <a href="https://github.com/barbodz" target="_blank" rel="noopener">github.com/barbodz</a>
+    </div>
+    <div class="foot-note">Vancouver, BC · B.Sc. Information Technology, Fairleigh Dickinson University (expected Dec 2026)</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
