@@ -310,6 +310,25 @@
 
     <div class="project">
       <div class="project-top">
+        <h3>Local LLM Safety Evaluation & Mitigation</h3>
+        <span class="project-link" style="color: var(--ink-soft);">team project · Fall 2025</span>
+      </div>
+      <p class="desc">Course project with a teammate evaluating the safety robustness of a locally-deployed, offline LLM (Mistral-7B-Instruct via GPT4All). We built a threat model around three failure modes — narrative/roleplay jailbreaks, session memory leakage, and instruction-order brittleness — then designed, implemented, and re-tested targeted mitigations for each. All testing used fully synthetic data in a sandboxed, offline environment, with results reported only to our instructor as part of a responsible-disclosure approach.</p>
+      <ul class="project-highlights">
+        <li>Found jailbreak success was driven almost entirely by narrative framing: professional or fictional framing hit up to 100% attack success, while direct requests were reliably refused</li>
+        <li>Measured a clear recency bias in instruction-following: unsafe requests placed after safety instructions succeeded 50% of the time, versus 0% when safety instructions came last</li>
+        <li>Designed and prototyped three mitigations — a strengthened system prompt, instruction-order normalization, and session cleanup — which cut unsafe outputs from 70% to 20% and then to 0% once combined</li>
+      </ul>
+      <div class="tags">
+        <span class="tag">llm safety</span>
+        <span class="tag">threat modeling</span>
+        <span class="tag">mistral-7b</span>
+        <span class="tag">jailbreak testing</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
         <h3>Wardrobe Outfit Recommender</h3>
         <a class="project-link" href="https://github.com/barbodz/wardrobe-outfit-recommender" target="_blank" rel="noopener">github ↗</a>
       </div>
